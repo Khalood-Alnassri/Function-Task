@@ -119,7 +119,7 @@
         {
             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
             TimeOnly currentTime = TimeOnly.FromDateTime(DateTime.Now);
-            Console.WriteLine("Good morning, Trainee!" + ", current date: " + currentDate.ToString("dd/MM/yyyy") + ", current time: " + currentTime.ToString("hh:mm") + ". Let's code something great today!");
+            Console.WriteLine("Good morning, Trainee!" + ", current date: " + currentDate.ToString("dd/MM/yyyy") + ", current time: " + currentTime.ToString("hh:mm tt") + ". Let's code something great today!");
 
         }
     }
