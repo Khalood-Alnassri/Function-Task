@@ -110,6 +110,12 @@ namespace Function_Task
                         break;
 
                     case 8:
+
+                        Console.WriteLine("Enter your password to check Strength  : ");
+                        string password = Console.ReadLine();
+
+                        Console.WriteLine("Password strength: " + GetPasswordStrength(password));
+
                         break;
 
                     case 9:
@@ -369,6 +375,38 @@ namespace Function_Task
 
         }
 
+        static public string GetPasswordStrength(string password) // case 8
+        {
+            int Rating = 0;
+            if (password.Length >= 8)
+                Rating++;
+
+            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"[A-Z]"))
+                Rating++;
+
+            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"[0-9]"))
+                Rating++;
+
+            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"[! @ # $ % ^ & *]"))
+                Rating++;
+
+           
+            if (Rating == 0 || Rating == 1)
+                return "Weak";
+                   
+
+                   
+            else if (Rating == 3 || Rating == 2)
+                return "Moderate";
+
+
+            else
+                return "Strong";
+                    
+
+
+
+        }
 
     }
 }
