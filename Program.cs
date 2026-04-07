@@ -122,6 +122,40 @@ namespace Function_Task
                         break;
 
                     case 13:
+
+                        Console.WriteLine("Do you want to enter multiple prices? (yes/no): ");
+
+                        string multiplePricesInput = Console.ReadLine();
+
+                        if (multiplePricesInput.ToLower() == "yes")
+                        {
+                            Console.WriteLine("Enter prices separated by commas: ");
+                            string pricesInput = Console.ReadLine();
+                            string[] pricesArray = pricesInput.Split(',');
+                            double[] prices = Array.ConvertAll(pricesArray, double.Parse);
+
+                            Console.WriteLine("Enter discount percent: ");
+                            double discountPrice = double.Parse(Console.ReadLine());
+
+                            double[] discountedPrices = CalculateDiscount(prices, discountPrice);
+                            Console.WriteLine("The final prices after discount are: " + string.Join(", ", discountedPrices));
+                        }
+
+
+                        else if (multiplePricesInput.ToLower() == "no")
+                        {
+                            Console.WriteLine("Enter price: ");
+                            double price = double.Parse(Console.ReadLine());
+
+                            Console.WriteLine("Enter discount percent: ");
+                            double discountPercent = double.Parse(Console.ReadLine());
+
+                            Console.WriteLine("Enter max cap (optional, press Enter to skip): ");
+                            string maxCapInput = Console.ReadLine();
+
+                            Console.WriteLine("The final price after discount is: " + (string.IsNullOrWhiteSpace(maxCapInput) ? CalculateDiscount(price, discountPercent) : CalculateDiscount(price, discountPercent, double.Parse(maxCapInput))));
+                        }
+
                         break;
 
                     case 14:
@@ -261,5 +295,40 @@ namespace Function_Task
             return Info;
 
         }
+
+        static public double CalculateDiscount(double price, double discountPercent) // case 13 (price and discount percent only)
+        {
+            double discountAmount = price * (discountPercent / 100);
+            double finalPrice = price - discountAmount;
+
+            return Math.Round(finalPrice, 3); // Round to 3 decimal places
+        }
+
+        static public double CalculateDiscount(double price, double discountPercent, double maxCap) //case 13 (price, discount percent and max cap)
+        {
+            double discountAmount = price * (discountPercent / 100);
+            double finalPrice = price - discountAmount;
+
+            if (discountAmount > maxCap)
+            {
+                finalPrice = price - maxCap;
+            }
+
+            return Math.Round(finalPrice, 3);
+        }
+
+        static public double[] CalculateDiscount(double[] prices, double discountPercent) //case 13 (price array and discount percent)
+        {
+            double[] discountedPrices = new double[prices.Length];
+
+            for (int i = 0; i < prices.Length; i++)
+            {
+                discountedPrices[i] = Math.Round(prices[i] - (prices[i] * (discountPercent / 100)), 3);
+            }
+
+            return discountedPrices;
+        }
+
+
     }
 }
