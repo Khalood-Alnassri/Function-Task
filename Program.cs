@@ -1,4 +1,6 @@
-﻿namespace Function_Task
+﻿using System.Globalization;
+
+namespace Function_Task
 {
     internal class Program
     {
@@ -57,6 +59,15 @@
                         break;
 
                     case 2:
+
+                        Console.WriteLine("Enter customer name: ");
+                        string customerName = Console.ReadLine();
+
+                        Console.WriteLine("Enter invoiceDate: ");
+                        string invoiceDate = Console.ReadLine();
+
+                        PrintInvoiceHeader(customerName, invoiceDate);
+
                         break;
 
                     case 3:
@@ -121,6 +132,20 @@
             TimeOnly currentTime = TimeOnly.FromDateTime(DateTime.Now);
             Console.WriteLine("Good morning, Trainee!" + ", current date: " + currentDate.ToString("dd/MM/yyyy") + ", current time: " + currentTime.ToString("hh:mm tt") + ". Let's code something great today!");
 
+        }
+
+        static public void PrintInvoiceHeader(string customerName, string invoiceDate = "")
+        {
+            TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+            customerName = textInfo.ToTitleCase(customerName.ToLower());
+
+            if (string.IsNullOrWhiteSpace(invoiceDate))
+            {
+                invoiceDate = "Date not provided";
+            }
+
+            Console.WriteLine("INVOICE");
+            Console.WriteLine("Customer: " + customerName + "\nDate: " + invoiceDate);
         }
     }
 }
