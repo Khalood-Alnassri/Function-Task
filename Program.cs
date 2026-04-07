@@ -60,7 +60,7 @@ namespace Function_Task
 
                     case 2:
 
-                       
+                        PrintStarBorder();
 
                         break;
 
@@ -329,6 +329,23 @@ namespace Function_Task
             return discountedPrices;
         }
 
+        static public void PrintStarBorder() // case 2
+        { 
+            int rows = 40;
+            for (int i = 0; i < rows; i++)
+            {
+                    Console.Write("*");
+            }
+
+            Console.WriteLine("\n Welcome to C# Functions!\n");
+
+            int row = 40;
+            for (int i = 0; i < row; i++)
+            {
+                Console.Write("*");
+            }
+
+        }
 
     }
 }
