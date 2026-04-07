@@ -60,6 +60,18 @@ namespace Function_Task
 
                     case 2:
 
+                       
+
+                        break;
+
+                    case 3:
+
+                     
+
+                        break;
+
+                    case 4:
+
                         Console.WriteLine("Enter customer name: ");
                         string customerName = Console.ReadLine();
 
@@ -70,10 +82,16 @@ namespace Function_Task
 
                         break;
 
-                    case 3:
+                    case 5:
+                        break;
 
-                        Console.WriteLine("Enter temperature value: " );
-                        double value = double.Parse(Console.ReadLine());    
+                    case 6:
+                        break;
+
+                    case 7:
+
+                        Console.WriteLine("Enter temperature value: ");
+                        double value = double.Parse(Console.ReadLine());
 
                         Console.WriteLine("Enter unit of temperature (C, F, K): ");
                         string fromUnit = Console.ReadLine();
@@ -85,18 +103,6 @@ namespace Function_Task
 
                         break;
 
-                    case 4:
-                        break;
-
-                    case 5:
-                        break;
-
-                    case 6:
-                        break;
-
-                    case 7:
-                        break;
-
                     case 8:
                         break;
 
@@ -104,6 +110,9 @@ namespace Function_Task
                         break;
 
                     case 10:
+
+                        GetSessionInfo();
+
                         break;
 
                     case 11:
@@ -138,7 +147,7 @@ namespace Function_Task
             }
         }
 
-        static public void PrintDailyGreeting()
+        static public void PrintDailyGreeting() // case1
         {
             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
             TimeOnly currentTime = TimeOnly.FromDateTime(DateTime.Now);
@@ -146,7 +155,7 @@ namespace Function_Task
 
         }
 
-        static public void PrintInvoiceHeader(string customerName, string invoiceDate = "")
+        static public void PrintInvoiceHeader(string customerName, string invoiceDate = "") // case 4
         {
             TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
             customerName = textInfo.ToTitleCase(customerName.ToLower());
@@ -160,7 +169,7 @@ namespace Function_Task
             Console.WriteLine("Customer: " + customerName + "\nDate: " + invoiceDate);
         }
 
-        static public double ConvertTemperature(double value, string fromUnit, string toUnit)
+        static public double ConvertTemperature(double value, string fromUnit, string toUnit) // case 7
         {
             fromUnit = fromUnit.ToUpper();
             toUnit = toUnit.ToUpper();
@@ -222,6 +231,35 @@ namespace Function_Task
             }
 
             return Math.Round(finalValue, 2); // Round to 2 decimal places for better readability
+        }
+
+        static public string GetSessionInfo() // case 10
+        {
+            DayOfWeek currentDay = DateTime.Now.DayOfWeek;
+            DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
+            TimeOnly currentTime = TimeOnly.FromDateTime(DateTime.Now);
+
+            string sessionInfo;
+
+            if (currentTime.Hour < 12)
+            {
+                sessionInfo = "Morning session. ";
+            }
+
+            else if (currentTime.Hour >= 12 && currentTime.Hour <= 17)
+            {
+                sessionInfo = "Afternoon session. ";
+            }
+
+            else
+            {
+                sessionInfo = "Evening session. ";
+            }
+
+            string Info = ("Today is " + currentDay + ", " + currentDate.ToString("MMMM dd, yyyy") + ", current hour: " + currentTime.ToString("HH:mm") + "-" + sessionInfo); // return type is string, so we need to concatenate all the information into a single string to return it.
+
+            return Info;
+
         }
     }
 }
