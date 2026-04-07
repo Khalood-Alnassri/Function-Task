@@ -66,7 +66,7 @@ namespace Function_Task
 
                     case 3:
 
-                     
+
 
                         break;
 
@@ -83,6 +83,12 @@ namespace Function_Task
                         break;
 
                     case 5:
+
+                        Console.WriteLine("Enter number of rows for the pattern: ");
+                        int rows = int.Parse(Console.ReadLine());
+
+                        PrintNumberPattern(rows);
+
                         break;
 
                     case 6:
@@ -208,7 +214,7 @@ namespace Function_Task
             fromUnit = fromUnit.ToUpper();
             toUnit = toUnit.ToUpper();
 
-            double convertedValue ;
+            double convertedValue;
 
             // Convert the input value to Celsius first
 
@@ -250,7 +256,7 @@ namespace Function_Task
                     break;
                 case "F":
 
-                    finalValue =(convertedValue * 9 / 5) + 32;
+                    finalValue = (convertedValue * 9 / 5) + 32;
 
                     break;
                 case "K":
@@ -330,11 +336,11 @@ namespace Function_Task
         }
 
         static public void PrintStarBorder() // case 2
-        { 
+        {
             int rows = 40;
             for (int i = 0; i < rows; i++)
             {
-                    Console.Write("*");
+                Console.Write("*");
             }
 
             Console.WriteLine("\n Welcome to C# Functions!\n");
@@ -346,6 +352,23 @@ namespace Function_Task
             }
 
         }
+
+        static public void PrintNumberPattern(int rows) // case 5 
+        {
+            int row = rows;
+
+            for (int i = 1; i <= row; i++)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    Console.Write(j + " ");
+                }
+
+                Console.WriteLine();
+            }
+
+        }
+
 
     }
 }
