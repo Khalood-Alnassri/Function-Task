@@ -230,7 +230,7 @@ namespace Function_Task
                     return -999; // Invalid toUnit, return an error value
             }
 
-            return Math.Round(finalValue, 2); // Round to 2 decimal places for better readability
+            return Math.Round(finalValue, 2); // Round to 2 decimal places 
         }
 
         static public string GetSessionInfo() // case 10
