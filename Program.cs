@@ -71,6 +71,18 @@ namespace Function_Task
                         break;
 
                     case 3:
+
+                        Console.WriteLine("Enter temperature value: " );
+                        double value = double.Parse(Console.ReadLine());    
+
+                        Console.WriteLine("Enter unit of temperature (C, F, K): ");
+                        string fromUnit = Console.ReadLine();
+
+                        Console.WriteLine("Enter unit to convert to (C, F, K): ");
+                        string toUnit = Console.ReadLine();
+
+                        Console.WriteLine("The converted temperature is: " + ConvertTemperature(value, fromUnit, toUnit));
+
                         break;
 
                     case 4:
@@ -146,6 +158,70 @@ namespace Function_Task
 
             Console.WriteLine("INVOICE");
             Console.WriteLine("Customer: " + customerName + "\nDate: " + invoiceDate);
+        }
+
+        static public double ConvertTemperature(double value, string fromUnit, string toUnit)
+        {
+            fromUnit = fromUnit.ToUpper();
+            toUnit = toUnit.ToUpper();
+
+            double convertedValue ;
+
+            // Convert the input value to Celsius first
+
+            switch (fromUnit)
+            {
+                case "C":
+
+                    convertedValue = value;
+
+                    break;
+
+                case "F":
+
+                    convertedValue = (value - 32) * 5 / 9;
+
+                    break;
+
+                case "K":
+
+                    convertedValue = value - 273.15;
+
+                    break;
+
+                default:
+
+                    return -999; // Invalid fromUnit, return an error value
+            }
+
+            // Now convert from Celsius to the desired output unit
+
+            double finalValue;
+
+            switch (toUnit)
+            {
+                case "C":
+
+                    finalValue = convertedValue;
+
+                    break;
+                case "F":
+
+                    finalValue =(convertedValue * 9 / 5) + 32;
+
+                    break;
+                case "K":
+
+                    finalValue = convertedValue + 273.15;
+
+                    break;
+
+                default:
+
+                    return -999; // Invalid toUnit, return an error value
+            }
+
+            return Math.Round(finalValue, 2); // Round to 2 decimal places for better readability
         }
     }
 }
