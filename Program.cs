@@ -19,7 +19,7 @@
             Console.WriteLine("10. Session Timer.");
             Console.WriteLine("11. Magic Number Generator.");
             Console.WriteLine("12. Inspirational Day Message.");
-            Console.WriteLine("13. Flexible Discount Calculator."); 
+            Console.WriteLine("13. Flexible Discount Calculator.");
             Console.WriteLine("14. Configurable Report Header.");
             Console.WriteLine("15. Smart Product Search.");
             Console.WriteLine("16. Exit.");
@@ -47,10 +47,13 @@
                     Console.WriteLine("Invalid input. Please choose a number from 1 to 16.");
                 }
 
-                switch(option)
+                switch (option)
                 {
 
                     case 1:
+
+                        PrintDailyGreeting();
+
                         break;
 
                     case 2:
@@ -74,33 +77,33 @@
                     case 8:
                         break;
 
-                     case 9:
+                    case 9:
                         break;
 
-                     case 10:
+                    case 10:
                         break;
 
-                     case 11:
+                    case 11:
                         break;
 
-                     case 12:
+                    case 12:
                         break;
 
-                     case 13:
+                    case 13:
                         break;
 
-                     case 14:
+                    case 14:
                         break;
 
-                      case 15:
+                    case 15:
                         break;
 
-                      case 16:
+                    case 16:
                         exit = true;
                         Console.WriteLine("Exiting the program. Goodbye!");
                         break;
 
-                      default:
+                    default:
                         Console.WriteLine("Invalid option. Please choose a number from 1 to 16.");
                         break;
 
@@ -110,6 +113,14 @@
                 Console.ReadKey();
                 Console.Clear();
             }
+        }
+
+        static public void PrintDailyGreeting()
+        {
+            DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
+            TimeOnly currentTime = TimeOnly.FromDateTime(DateTime.Now);
+            Console.WriteLine("Good morning, Trainee!" + ", current date: " + currentDate.ToString("dd/MM/yyyy") + ", current time: " + currentTime.ToString("hh:mm") + ". Let's code something great today!");
+
         }
     }
 }
